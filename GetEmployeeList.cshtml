@@ -1,0 +1,54 @@
+﻿@using BOL;
+
+@*@{
+    ViewData["Title"] = "ListOfEmployees";
+}*@
+@* private int id;
+        private string firstName;
+        private string lastName;
+        private string email;
+        private double salary;
+        private DateOnly dob;
+        private string password;
+        private Department dept;*@
+<h1 align="center">All Employees</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">FIRSTNAME</th>
+            <th scope="col">LASTNAME</th>
+            <th scope="col">EMAIL</th>
+            <th scope="col">SALARY</th>
+            <th scope="col">DATE OF BIRTH</th>
+            <th scope="col">DEPARTMENT</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+           
+            List<Employee> empList = (List<Employee>)ViewData["emps"];
+            @foreach (Employee E in empList)
+            {
+                <tr>
+                    <td>@E.Id</td>
+                    <td>@E.FirstName</td>
+                    <td>@E.LastName</td>
+                    <td>@E.Email</td>
+                    <td>@E.Salary</td>
+                    <td>@E.Dob.ToShortDateString()</td>
+                    <td>@E.Dept</td>
+                </tr>
+            }
+       }
+    </tbody>
+   <a href="/Home/Register">
+        <button type="submit" class="btn btn-primary">Add Employee</button>
+   </a>
+    <a href="/Home/Update">
+        <button type="submit" class="btn btn-primary">Update Employee</button>
+    </a>
+
+   
+
+</table>
